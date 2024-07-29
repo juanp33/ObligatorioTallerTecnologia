@@ -11,6 +11,7 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
+                            
                             <StackLayout Orientation="Vertical"
                                          Padding="10">
                                 <Label Text="{Binding Title}"
@@ -27,7 +28,7 @@
                                        FontSize="18"
                                        TextColor="DarkGray" />
                                 <Button Text="Ver Pelicula"
-                                        Clicked="MostrarDetallesDePelicula_Clicked"
+                                        Clicked="Pepito_Clicked"
                                         CommandParameter="{Binding .}" />
                             </StackLayout>
                         </ViewCell>

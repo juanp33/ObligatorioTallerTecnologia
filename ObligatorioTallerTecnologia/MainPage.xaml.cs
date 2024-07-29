@@ -1,4 +1,5 @@
 ﻿using ObligatorioTallerTecnologia.Modelo;
+using System.Linq.Expressions;
 
 namespace ObligatorioTallerTecnologia
 {
@@ -33,6 +34,19 @@ namespace ObligatorioTallerTecnologia
                 
             }
 
+        }
+
+        private void Pepito_Clicked(object sender, EventArgs e)
+        {
+            try
+            {
+                var photo = MediaPicker.CapturePhotoAsync();
+                if (photo != null)
+                {
+                    var stream = photo.Result.OpenReadAsync();
+                }     
+            }
+               catch { }
         }
     }
 
