@@ -2,39 +2,35 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ObligatorioTallerTecnologia.MainPage">
-    <ScrollView>
-        <VerticalStackLayout>
+    <VerticalStackLayout>
 
-            <ListView x:Name="MoviesListView"
-                      HasUnevenRows="True"
-                      SeparatorVisibility="None">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell>
-                            
-                            <StackLayout Orientation="Vertical"
-                                         Padding="10">
-                                <Label Text="{Binding Title}"
-                                       FontSize="24"
-                                       TextColor="Black" />
-                                <Image Source="{Binding UrlImgCompleta}"
-                                       Aspect="AspectFit"
-                                       HeightRequest="400"
-                                       HorizontalOptions="Center" />
-                                <Label Text="{Binding ReleaseDate}"
-                                       FontSize="14"
-                                       TextColor="Gray" />
-                                <Label Text="{Binding Overview}"
-                                       FontSize="18"
-                                       TextColor="DarkGray" />
-                                <Button Text="Ver Pelicula"
-                                        Clicked="Pepito_Clicked"
-                                        CommandParameter="{Binding .}" />
-                            </StackLayout>
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-        </VerticalStackLayout>
-    </ScrollView>
+        <ListView x:Name="MoviesListView"
+                  HasUnevenRows="True"
+                  SeparatorVisibility="None">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Orientation="Vertical"
+                                     Padding="10">
+                            <Label Text="{Binding Title}"
+                                   FontSize="24"
+                                   TextColor="Black" />
+                            <Image Source="{Binding UrlImgCompleta}"
+                                   Aspect="AspectFit"
+                                   HeightRequest="400"
+                                   HorizontalOptions="Center" />
+                            <Label Text="{Binding ReleaseDate}"
+                                   FontSize="14"
+                                   TextColor="Gray" />
+                            <Label Text="{Binding Overview}"
+                                   FontSize="18"
+                                   TextColor="DarkGray" />
+                            <Button Text="Ver Pelicula"
+                                    Clicked="Pepito_Clicked" />
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </VerticalStackLayout>
 </ContentPage>

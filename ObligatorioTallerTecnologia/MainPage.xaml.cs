@@ -36,14 +36,14 @@ namespace ObligatorioTallerTecnologia
 
         }
 
-        private void Pepito_Clicked(object sender, EventArgs e)
+        private async void Pepito_Clicked(object sender, EventArgs e)
         {
             try
             {
-                var photo = MediaPicker.CapturePhotoAsync();
+                var photo = await MediaPicker.CapturePhotoAsync();
                 if (photo != null)
                 {
-                    var stream = photo.Result.OpenReadAsync();
+                    var stream = await photo.OpenReadAsync();
                 }     
             }
                catch { }
