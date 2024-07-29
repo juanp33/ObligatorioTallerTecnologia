@@ -48,6 +48,15 @@ namespace ObligatorioTallerTecnologia
             }
                catch { }
         }
+
+        private async void Button_Clicked(object sender, EventArgs e)
+        {
+            var localizacion = await Geolocation.GetLastKnownLocationAsync();
+            if (localizacion != null)
+            {
+                await DisplayAlert("Tu ubicacion es", "Mi localizacion es: Latitud: " + localizacion.Latitude ,"Cerrar");
+            }
+        }
     }
 
 }

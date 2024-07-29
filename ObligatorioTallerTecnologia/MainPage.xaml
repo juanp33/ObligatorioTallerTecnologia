@@ -27,6 +27,8 @@
                                    TextColor="DarkGray" />
                             <Button Text="Ver Pelicula"
                                     Clicked="Pepito_Clicked" />
+                            <Button Text="Ver Ubicacion"
+                                    Clicked="Button_Clicked" />
                         </StackLayout>
                     </ViewCell>
                 </DataTemplate>
