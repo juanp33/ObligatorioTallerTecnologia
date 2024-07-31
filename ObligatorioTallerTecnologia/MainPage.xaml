@@ -1,38 +1,67 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+﻿<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="ObligatorioTallerTecnologia.MainPage">
-    <VerticalStackLayout>
+             x:Class="ObligatorioTallerTecnologia.MainPage"
+             BackgroundColor="Black">
+    <Grid>
+        
+        <Image Source="fondopantallainicio.jpg"
+               Aspect="AspectFill" />
+        <StackLayout Padding="20">
+            
+            <Label Text="Tu guía para películas"
+                   TextColor="White"
+                   FontSize="24"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center" />
 
-        <ListView x:Name="MoviesListView"
-                  HasUnevenRows="True"
-                  SeparatorVisibility="None">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <ViewCell>
-                        <StackLayout Orientation="Vertical"
-                                     Padding="10">
-                            <Label Text="{Binding Title}"
-                                   FontSize="24"
-                                   TextColor="Black" />
-                            <Image Source="{Binding UrlImgCompleta}"
-                                   Aspect="AspectFit"
-                                   HeightRequest="400"
-                                   HorizontalOptions="Center" />
-                            <Label Text="{Binding ReleaseDate}"
-                                   FontSize="14"
-                                   TextColor="Gray" />
-                            <Label Text="{Binding Overview}"
-                                   FontSize="18"
-                                   TextColor="DarkGray" />
-                            <Button Text="Ver Pelicula"
-                                    Clicked="Pepito_Clicked" />
-                            <Button Text="Ver Ubicacion"
-                                    Clicked="Button_Clicked" />
-                        </StackLayout>
-                    </ViewCell>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
-    </VerticalStackLayout>
+            
+            <Label Text="Descubre dónde ver nuevos contenidos, lo más popular y los próximos estrenos con VerYA."
+                   TextColor="Gray"
+                   FontSize="14"
+                   HorizontalOptions="Center" />
+
+           
+            <StackLayout Orientation="Horizontal"
+                         HorizontalOptions="Center"
+                         Margin="20,30,20,0">
+                <Button 
+                        Text="Peliculas en tendencia"
+                        BackgroundColor="#FFC107"
+                        TextColor="Black"
+                        CornerRadius="20"
+                        WidthRequest="200"
+                        Margin="10,0" 
+                        Clicked="Button_Popular"
+                        />
+                <Button Text="Busca una pelicula"
+                        BackgroundColor="Gray"
+                        TextColor="White"
+                        CornerRadius="20"
+                        WidthRequest="200"
+                        Margin="10,0" />
+            </StackLayout>
+
+           
+            <StackLayout Orientation="Horizontal"
+                         HorizontalOptions="Center"
+                         Margin="20,30,20,0">
+                <Image Source="disney.png"
+                       HeightRequest="40"
+                       Margin="5" />
+                <Image Source="netflix.png"
+                       HeightRequest="40"
+                       Margin="5" />
+                <Image Source="prime_video.png"
+                       HeightRequest="40"
+                       Margin="5" />
+                <Image Source="apple_tv.png"
+                       HeightRequest="40"
+                       Margin="5" />
+                <Image Source="hbo_max.png"
+                       HeightRequest="40"
+                       Margin="5" />
+               
+            </StackLayout>
+        </StackLayout>
+    </Grid>
 </ContentPage>

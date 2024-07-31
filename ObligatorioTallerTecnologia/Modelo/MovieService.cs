@@ -45,9 +45,12 @@ namespace ObligatorioTallerTecnologia.Modelo
             public List<Movie> Results { get; set; }
         }
 
+        
+       
         public class Movie
         {
             private const string UrlBaseDeImagen = "https://image.tmdb.org/t/p/w500";
+
             [JsonProperty("title")]
             public string Title { get; set; }
 
@@ -61,6 +64,14 @@ namespace ObligatorioTallerTecnologia.Modelo
             public string PosterPath { get; set; }
 
             public string UrlImgCompleta => string.IsNullOrEmpty(PosterPath) ? null : $"{UrlBaseDeImagen}{PosterPath}";
+
+            public bool IsDescriptionExpanded { get; set; } = false;
+
+            public string ShortOverview => Overview.Length > 150 ? Overview.Substring(0, 100) + "..." : Overview;
+
+            public string ToggleText => IsDescriptionExpanded ? "Ver menos" : "Ver más";
         }
     
+    
+
 }

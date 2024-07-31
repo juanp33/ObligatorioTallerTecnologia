@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:Class="ObligatorioTallerTecnologia.PopularMoviesPage"
+             Title="PopularMoviesPage">
+    <ScrollView>
+        <Grid>
+            <CollectionView x:Name="MoviesCollectionView"
+                            ItemsLayout="VerticalGrid, 2"
+                            ItemSizingStrategy="MeasureAllItems"
+                            SelectionMode="None">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout Orientation="Vertical"
+                                     Padding="10"
+                                     Margin="5"
+                                     BackgroundColor="White">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="300" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Label Text="{Binding Title}"
+                                       FontSize="18"
+                                       TextColor="Black"
+                                       Grid.Row="0"
+                                       HorizontalOptions="Center" />
+                                <Image Source="{Binding UrlImgCompleta}"
+                                       Aspect="AspectFit"
+                                       HeightRequest="200"
+                                       HorizontalOptions="Center"
+                                       Grid.Row="1" />
+                                <Label Text="{Binding ReleaseDate}"
+                                       FontSize="14"
+                                       TextColor="black"
+                                       HorizontalOptions="Center"
+                                       Grid.Row="2" />
+                                <Label Text="{Binding ShortOverview}"
+                                       FontSize="14"
+                                       TextColor="Black"
+                                       Grid.Row="3" />
+                                <Button Text="Ver detalles"
+                                        Clicked="MostrarDetallesDePelicula_Clicked"
+                                        CommandParameter="{Binding .}"
+                                        Grid.Row="4"
+                                        HorizontalOptions="Center" />
+                            </Grid>
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </Grid>
+    </ScrollView>
+</ContentPage>
