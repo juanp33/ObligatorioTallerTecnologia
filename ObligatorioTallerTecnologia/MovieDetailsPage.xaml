@@ -1,23 +1,23 @@
-
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-                          xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-                          x:Class="ObligatorioTallerTecnologia.MovieDetailsPage"
-                          Title="Detalles de la Película"
-                          BackgroundColor="White">
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ObligatorioTallerTecnologia.MovieDetailsPage"
+             Title="Detalles de la Película"
+             BackgroundColor="White">
     <ScrollView>
         <StackLayout Padding="20"
                      Spacing="20"
                      BackgroundColor="White">
-            <Image Source="{Binding UrlImgCompleta}"
-                   Aspect="AspectFit"
-                   HorizontalOptions="FillAndExpand"
-                   VerticalOptions="FillAndExpand" />
             <Label Text="{Binding Title}"
                    FontSize="28"
                    FontAttributes="Bold"
                    TextColor="Black"
                    HorizontalOptions="Center"
                    VerticalOptions="Start" />
+            <Image Source="{Binding UrlImgCompleta}"
+                   Aspect="AspectFit"
+                   HorizontalOptions="FillAndExpand"
+                   VerticalOptions="FillAndExpand" />
+           
             <Label Text="{Binding ReleaseDate}"
                    FontSize="16"
                    TextColor="Gray"
@@ -40,13 +40,18 @@
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
-                <Image Source="left_arrow.png"
+                <Image Source="flechaizquierda.jpg"
                        WidthRequest="30"
                        HeightRequest="30"
                        VerticalOptions="Center"
                        HorizontalOptions="Center"
-                       Grid.Column="0" />
-                <CollectionView ItemsSource="{Binding Credits.Cast}"
+                       Grid.Column="0">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnLeftArrowTapped" />
+                    </Image.GestureRecognizers>
+                </Image>
+                <CollectionView x:Name="ActorsCollectionView"
+                                ItemsSource="{Binding Credits.Cast}"
                                 ItemSizingStrategy="MeasureAllItems"
                                 ItemsLayout="HorizontalList"
                                 Grid.Column="1">
@@ -72,12 +77,16 @@
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                 </CollectionView>
-                <Image Source="right_arrow.png"
+                <Image Source="flechaderecha.jpg"
                        WidthRequest="30"
                        HeightRequest="30"
                        VerticalOptions="Center"
                        HorizontalOptions="Center"
-                       Grid.Column="2" />
+                       Grid.Column="2">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnRightArrowTapped" />
+                    </Image.GestureRecognizers>
+                </Image>
             </Grid>
             <Label Text="Trailer"
                    FontSize="24"

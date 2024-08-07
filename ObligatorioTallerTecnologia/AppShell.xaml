@@ -10,7 +10,11 @@
     <ShellContent Title="Home"
                   ContentTemplate="{DataTemplate local:MainPage}"
                   Route="MainPage" />
-    <ShellContent Title="Popular Movies"
+    <ShellContent Title="Populares"
                   ContentTemplate="{DataTemplate local:PopularMoviesPage}"
                   Route="popularmovies" />
+   
+        <ShellContent Title="Peliculas"
+                      ContentTemplate="{DataTemplate local:MoviesPage}" />
+   
 </Shell>
