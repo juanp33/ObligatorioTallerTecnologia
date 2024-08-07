@@ -6,7 +6,7 @@
     <ScrollView>
         <Grid Padding="10">
             <CollectionView x:Name="MoviesCollectionView"
-                            ItemsLayout="VerticalGrid, 2"
+                            ItemsLayout="VerticalGrid, 3"
                             ItemSizingStrategy="MeasureAllItems"
                             SelectionMode="None">
                 <CollectionView.ItemTemplate>

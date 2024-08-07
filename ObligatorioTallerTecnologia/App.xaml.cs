@@ -10,8 +10,8 @@ namespace ObligatorioTallerTecnologia;
             InitializeComponent();
 
             MainPage = new AppShell();
-
-            UserRepository= _UserRepository;
+        //MainPage = new NavigationPage(new MoviesPage());
+        UserRepository = _UserRepository;
         }
     }
 

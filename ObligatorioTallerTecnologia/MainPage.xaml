@@ -38,7 +38,8 @@
                         TextColor="White"
                         CornerRadius="20"
                         WidthRequest="200"
-                        Margin="10,0" />
+                        Margin="10,0"
+                        Clicked="Button_Movies"/>
             </StackLayout>
 
            

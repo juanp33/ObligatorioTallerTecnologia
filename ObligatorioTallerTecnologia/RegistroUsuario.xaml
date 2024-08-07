@@ -1,43 +1,55 @@
-<?xml version="1.0" encoding="utf-8" ?>
-<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="People.MainPage" 
+             x:Class="ObligatorioTallerTecnologia.RegistroUsuario"
              BackgroundColor="{DynamicResource Light}">
 
-    <Grid Padding="5" RowSpacing="5" ColumnSpacing="5"
-          RowDefinitions="Auto,Auto,Auto,Auto,">
+    <Grid Padding="5"
+          RowSpacing="5"
+          ColumnSpacing="5">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
 
         <Entry x:Name="newName"
-           Placeholder="Nombre de usuario" />
+               Placeholder="Nombre de usuario"
+               Grid.Row="0" />
         <Entry x:Name="newPass"
-               Placeholder="Introduzca su contraseñ" />
+               Placeholder="Introduzca su contraseña"
+               Grid.Row="1" />
         <Entry x:Name="newEmail"
-               Placeholder="Introduzca su Email" />
+               Placeholder="Introduzca su Email"
+               Grid.Row="2" />
 
         <Button Text="CreateUser"
-            Grid.Row="1"
-            Clicked="OnNewButtonClicked" />
+                Grid.Row="3"
+                Clicked="OnNewButtonClicked" />
 
         <Label x:Name="statusMessage"
-           TextColor="{StaticResource Primary}"
-           Grid.Row="2" />
+               TextColor="{StaticResource Primary}"
+               Grid.Row="4" />
 
         <Button Text="Obtener todos los usuarios"
-            Grid.Row="3"
-            Clicked="OnGetButtonClicked" />
+                Grid.Row="5"
+                Clicked="OnGetButtonClicked" />
 
-        <CollectionView x:Name="userList" Grid.Row="4">
+        <CollectionView x:Name="userList"
+                        Grid.Row="6">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
-                    <Grid ColumnDefinitions=",2*">
-                        <Label Text="{Binding Id}" TextColor="{StaticResource Primary}"/>
-                        <Label Grid.Column="1" Text="{Binding Name}" TextColor="{StaticResource Primary}"/>
+                    <Grid ColumnDefinitions="Auto,2*">
+                        <Label Text="{Binding Id}"
+                               TextColor="{StaticResource Primary}" />
+                        <Label Grid.Column="1"
+                               Text="{Binding Name}"
+                               TextColor="{StaticResource Primary}" />
                     </Grid>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
-
     </Grid>
 
 </ContentPage>

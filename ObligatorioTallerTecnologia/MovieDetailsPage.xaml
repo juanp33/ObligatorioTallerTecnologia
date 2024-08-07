@@ -16,8 +16,10 @@
             <Image Source="{Binding UrlImgCompleta}"
                    Aspect="AspectFit"
                    HorizontalOptions="FillAndExpand"
-                   VerticalOptions="FillAndExpand" />
-           
+                   VerticalOptions="FillAndExpand"
+                   MaximumHeightRequest="850"
+                   MaximumWidthRequest="850" />
+
             <Label Text="{Binding ReleaseDate}"
                    FontSize="16"
                    TextColor="Gray"
@@ -64,6 +66,8 @@
                                        Aspect="AspectFill"
                                        HeightRequest="150"
                                        WidthRequest="100"
+                                       MaximumHeightRequest="150"
+                                       MaximumWidthRequest="100"
                                        HorizontalOptions="Center" />
                                 <Label Text="{Binding Name}"
                                        FontSize="14"
