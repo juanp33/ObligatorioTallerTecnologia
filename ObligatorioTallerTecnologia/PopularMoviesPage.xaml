@@ -1,55 +1,53 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              x:Class="ObligatorioTallerTecnologia.PopularMoviesPage"
-             Title="PopularMoviesPage">
+             Title="Popular Movies">
     <ScrollView>
-        <Grid>
+        <Grid Padding="10">
             <CollectionView x:Name="MoviesCollectionView"
                             ItemsLayout="VerticalGrid, 2"
                             ItemSizingStrategy="MeasureAllItems"
                             SelectionMode="None">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <StackLayout Orientation="Vertical"
-                                     Padding="10"
-                                     Margin="5"
-                                     BackgroundColor="White">
-                            <Grid>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="Auto" />
-                                    <RowDefinition Height="300" />
-                                    <RowDefinition Height="Auto" />
-                                    <RowDefinition Height="Auto" />
-                                    <RowDefinition Height="Auto" />
-                                </Grid.RowDefinitions>
-                                <Label Text="{Binding Title}"
-                                       FontSize="18"
-                                       TextColor="Black"
-                                       Grid.Row="0"
-                                       HorizontalOptions="Center" />
-                                <Image Source="{Binding UrlImgCompleta}"
-                                       Aspect="AspectFit"
-                                       HeightRequest="200"
-                                       HorizontalOptions="Center"
-                                       Grid.Row="1" />
-                                <Label Text="{Binding ReleaseDate}"
-                                       FontSize="14"
-                                       TextColor="black"
-                                       HorizontalOptions="Center"
-                                       Grid.Row="2" />
-                                <Label Text="{Binding ShortOverview}"
-                                       FontSize="14"
-                                       TextColor="Black"
-                                       Grid.Row="3" />
-                                <Button Text="Ver detalles"
-                                        Clicked="MostrarDetallesDePelicula_Clicked"
-                                        CommandParameter="{Binding .}"
-                                        Grid.Row="4"
-                                        HorizontalOptions="Center" />
-                            </Grid>
-                        </StackLayout>
+                        <Frame Margin="5"
+                               CornerRadius="10"
+                               BackgroundColor="White"
+                               HasShadow="True">
+                            <StackLayout Orientation="Vertical"
+                                         Padding="0">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="*" />
+                                        <RowDefinition Height="Auto" />
+                                    </Grid.RowDefinitions>
+                                    <Label Text="{Binding Title}"
+                                           FontSize="14"
+                                           TextColor="Black"
+                                           Grid.Row="0"
+                                           HorizontalOptions="Center"
+                                           Margin="5" />
+                                    <Image Source="{Binding UrlImgCompleta}"
+                                           Aspect="AspectFill"
+                                           HorizontalOptions="FillAndExpand"
+                                           VerticalOptions="FillAndExpand"
+                                           Grid.Row="1">
+                                        <Image.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="OnImageTapped"
+                                                                  CommandParameter="{Binding .}" />
+                                        </Image.GestureRecognizers>
+                                    </Image>
+                                    <Label Text="{Binding ReleaseDate}"
+                                           FontSize="12"
+                                           TextColor="black"
+                                           HorizontalOptions="Center"
+                                           Grid.Row="2"
+                                           Margin="5" />
+                                </Grid>
+                            </StackLayout>
+                        </Frame>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>

@@ -1,61 +1,44 @@
-namespace ObligatorioTallerTecnologia;
-using ObligatorioTallerTecnologia.Modelo;
-using System.Collections.ObjectModel;
-
-public partial class PopularMoviesPage : ContentPage
+namespace ObligatorioTallerTecnologia
 {
-    private MovieService _movieService;
-    private ObservableCollection<Movie> _movies;
+    using ObligatorioTallerTecnologia.Modelo;
+    using System.Collections.ObjectModel;
+    using Microsoft.Maui.Controls;
 
-    public PopularMoviesPage()
+    public partial class PopularMoviesPage : ContentPage
     {
-        InitializeComponent();
-        _movieService = new MovieService();
-        _movies = new ObservableCollection<Movie>();
-        MoviesCollectionView.ItemsSource = _movies;
-        LoadMovies();
-    }
+        private MovieService _movieService;
+        private ObservableCollection<Movie> _movies;
 
-    private async void LoadMovies()
-    {
-        var movies = await _movieService.GetPopularMoviesAsync();
-        foreach (var movie in movies)
+        public PopularMoviesPage()
         {
-            _movies.Add(movie);
+            InitializeComponent();
+            _movieService = new MovieService();
+            _movies = new ObservableCollection<Movie>();
+            MoviesCollectionView.ItemsSource = _movies;
+            LoadMovies();
         }
-    }
 
-    private async void MostrarDetallesDePelicula_Clicked(object sender, EventArgs e)
-    {
-        var button = (Button)sender;
-        var movie = button?.BindingContext as Movie;
-
-        if (movie != null)
+        private async void LoadMovies()
         {
-            // Implementar la lógica para mostrar los detalles de la película
-        }
-    }
-
-    private async void Pepito_Clicked(object sender, EventArgs e)
-    {
-        try
-        {
-            var photo = await MediaPicker.CapturePhotoAsync();
-            if (photo != null)
+            var movies = await _movieService.GetPopularMoviesAsync();
+            foreach (var movie in movies)
             {
-                var stream = await photo.OpenReadAsync();
-                // Implementar la lógica para manejar la foto capturada
+                _movies.Add(movie);
             }
         }
-        catch { }
-    }
 
-    private async void Button_Clicked(object sender, EventArgs e)
-    {
-        var localizacion = await Geolocation.GetLastKnownLocationAsync();
-        if (localizacion != null)
+        private async void OnImageTapped(object sender, EventArgs e)
         {
-            await DisplayAlert("Tu ubicación es", $"Mi localización es: Latitud: {localizacion.Latitude}, Longitud: {localizacion.Longitude}", "Cerrar");
+            var image = sender as Image;
+            var movie = image?.BindingContext as Movie;
+            if (movie != null)
+            {
+                var movieDetails = await _movieService.GetMovieDetailsAsync(movie.Id);
+                if (movieDetails != null)
+                {
+                    await Navigation.PushAsync(new MovieDetailsPage(movieDetails));
+                }
+            }
         }
     }
 }
