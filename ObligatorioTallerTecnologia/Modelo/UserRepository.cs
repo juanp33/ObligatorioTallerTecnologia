@@ -14,46 +14,92 @@ namespace ObligatorioTallerTecnologia.Modelo
         public string statusMessage { get; set; }
 
         private SQLiteConnection conn;
-        private void Init()
+        public Usuario GetUserByEmail(string email)
         {
-            if (conn is not null)
-                return;
-            conn = new(_dbPath);
-            conn.CreateTable<Usuario>();
-
-        }
-        public UserRepository(string dbPath)
-        {
-            _dbPath = dbPath;
-        }
-        public void AddUser(string nombre, string email, string contraseñaa)
-        {
-            int result = 0;
             try
             {
                 Init();
-
-                Usuario usuario = new Usuario { nombreUsuario = nombre, email = email, contraseña = contraseñaa };
-                result = conn.Insert(usuario);
+                return conn.Table<Usuario>().FirstOrDefault(u => u.email == email);
             }
             catch (Exception ex)
             {
-                statusMessage = "Error xD";
+                statusMessage = $"Error: {ex.Message}";
+                return null;
             }
         }
+        private void Init()
+        {
+            if (conn != null)
+                return;
+            conn = new SQLiteConnection(_dbPath);
+            conn.CreateTable<Usuario>();
+        }
 
+        public UserRepository(string dbPath)
+        {
+            _dbPath = dbPath;
+            Init(); 
+        }
+        public Usuario GetUserById(int id)
+        {
+            try
+            {
+                Init();
+                return conn.Table<Usuario>().FirstOrDefault(u => u.idUsuario == id);
+            }
+            catch (Exception ex)
+            {
+                statusMessage = $"Error: {ex.Message}";
+                return null;
+            }
+        }
+        public void AddUser(Usuario user)
+        {
+            try
+            {
+                Init();
+                int result = conn.Insert(user);
+                statusMessage = $"Usuario agregado: {user.nombreUsuario} (ID: {user.idUsuario})";
+            }
+            catch (Exception ex)
+            {
+                statusMessage = $"Error: {ex.Message}";
+            }
+        }
+        public Usuario GetUser(string email, string password)
+        {
+            try
+            {
+                Init();
+                return conn.Table<Usuario>().FirstOrDefault(u => u.email == email && u.contraseña == password);
+            }
+            catch (Exception ex)
+            {
+                statusMessage = $"Error: {ex.Message}";
+                return null;
+            }
+        }
         public List<Usuario> GetAll()
         {
             try
             {
-                Init();
                 return conn.Table<Usuario>().ToList();
             }
-            catch
+            catch (Exception ex)
             {
-                statusMessage = "Error";
+                statusMessage = $"Error: {ex.Message}";
+                return new List<Usuario>();
             }
-            return new List<Usuario>();
+        }
+
+        public void CloseConnection()
+        {
+            if (conn != null)
+            {
+                conn.Close();
+                conn.Dispose();
+                conn = null;
+            }
         }
     }
 }

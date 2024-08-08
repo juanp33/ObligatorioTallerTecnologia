@@ -71,7 +71,7 @@ namespace ObligatorioTallerTecnologia.Modelo
 
         public async Task<List<Movie>> SearchMoviesByActorAsync(string actorName)
         {
-            // Primero, obtener el ID del actor
+            
             var actorRequest = new RestRequest("search/person", Method.Get);
             actorRequest.AddParameter("api_key", ApiKey);
             actorRequest.AddParameter("language", "es-ES");
@@ -93,7 +93,7 @@ namespace ObligatorioTallerTecnologia.Modelo
                 return new List<Movie>();
             }
 
-            // Ahora, buscar películas por el ID del actor
+          
             var movieRequest = new RestRequest($"discover/movie", Method.Get);
             movieRequest.AddParameter("api_key", ApiKey);
             movieRequest.AddParameter("language", "es-ES");

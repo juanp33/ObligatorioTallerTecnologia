@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<Shell
-    x:Class="ObligatorioTallerTecnologia.AppShell"
-    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:local="clr-namespace:ObligatorioTallerTecnologia"
-    
-    Title="ObligatorioTallerTecnologia">
+<Shell x:Class="ObligatorioTallerTecnologia.AppShell"
+       xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       xmlns:local="clr-namespace:ObligatorioTallerTecnologia"
+       Title="ObligatorioTallerTecnologia">
 
     <ShellContent Title="Home"
                   ContentTemplate="{DataTemplate local:MainPage}"
@@ -13,10 +11,19 @@
     <ShellContent Title="Populares"
                   ContentTemplate="{DataTemplate local:PopularMoviesPage}"
                   Route="popularmovies" />
-   
-        <ShellContent Title="Peliculas"
-                      ContentTemplate="{DataTemplate local:MoviesPage}
-            "
-                      Route="allmovies"/>
-   
+    <ShellContent Title="Peliculas"
+                  ContentTemplate="{DataTemplate local:MoviesPage}"
+                  Route="allmovies" />
+    <ShellContent Title="Login"
+                  ContentTemplate="{DataTemplate local:Login}"
+                  Route="Login"
+                  x:Name="loginShell" />
+    <ShellContent Title="Registro"
+                  ContentTemplate="{DataTemplate local:RegistroUsuario}"
+                  Route="Registro"
+                  x:Name="registroShell" />
+    <ShellContent Title="Perfil"
+                  ContentTemplate="{DataTemplate local:Perfil}"
+                  Route="Perfil"
+                  x:Name="perfilShell" />
 </Shell>

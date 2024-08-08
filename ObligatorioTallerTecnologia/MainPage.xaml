@@ -1,68 +1,59 @@
-﻿<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ObligatorioTallerTecnologia.MainPage"
              BackgroundColor="Black">
     <Grid>
-        
         <Image Source="fondopantallainicio.jpg"
-               Aspect="AspectFill" />
-        <StackLayout Padding="20">
-            
+               Aspect="AspectFill"
+               HorizontalOptions="FillAndExpand"
+               VerticalOptions="FillAndExpand" />
+
+        <StackLayout Padding="20"
+                     VerticalOptions="CenterAndExpand"
+                     HorizontalOptions="CenterAndExpand"
+                     BackgroundColor="Transparent">
+            <Image Source="logoinicio.png"
+                   HeightRequest="100"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center"
+                   Margin="0,30,0,30" />
             <Label Text="Tu guía para películas"
                    TextColor="White"
                    FontSize="24"
                    FontAttributes="Bold"
-                   HorizontalOptions="Center" />
+                   HorizontalTextAlignment="Center"
+                   VerticalTextAlignment="Center" />
 
-            
-            <Label Text="Descubre dónde ver nuevos contenidos, lo más popular y los próximos estrenos con VerYA."
-                   TextColor="Gray"
+            <Label Text="Descubre dónde ver nuevos contenidos, lo más popular y los próximos estrenos con stream cine."
+                   TextColor="White"
                    FontSize="14"
-                   HorizontalOptions="Center" />
+                   HorizontalTextAlignment="Center"
+                   VerticalTextAlignment="Center"
+                   Margin="0,10,0,0" />
 
-           
-            <StackLayout Orientation="Horizontal"
+            <StackLayout Orientation="Vertical"
                          HorizontalOptions="Center"
+                         VerticalOptions="Center"
                          Margin="20,30,20,0">
-                <Button 
-                        Text="Peliculas en tendencia"
-                        BackgroundColor="#FFC107"
-                        TextColor="Black"
+                <Button Text="Películas en tendencia"
+                        BackgroundColor="OrangeRed"
+                        TextColor="White"
                         CornerRadius="20"
                         WidthRequest="200"
-                        Margin="10,0" 
-                        Clicked="Button_Popular"
-                        />
-                <Button Text="Busca una pelicula"
+                        HeightRequest="50"
+                        Margin="10,0"
+                        Clicked="Button_Popular" />
+                <Button Text="Busca una película"
                         BackgroundColor="Gray"
                         TextColor="White"
                         CornerRadius="20"
                         WidthRequest="200"
-                        Margin="10,0"
-                        Clicked="Button_Movies"/>
-            </StackLayout>
-
-           
-            <StackLayout Orientation="Horizontal"
-                         HorizontalOptions="Center"
-                         Margin="20,30,20,0">
-                <Image Source="disney.png"
-                       HeightRequest="40"
-                       Margin="5" />
-                <Image Source="netflix.png"
-                       HeightRequest="40"
-                       Margin="5" />
-                <Image Source="prime_video.png"
-                       HeightRequest="40"
-                       Margin="5" />
-                <Image Source="apple_tv.png"
-                       HeightRequest="40"
-                       Margin="5" />
-                <Image Source="hbo_max.png"
-                       HeightRequest="40"
-                       Margin="5" />
-               
+                        HeightRequest="50"
+                        Margin="10,10"
+                        Clicked="Button_Movies" />
             </StackLayout>
         </StackLayout>
     </Grid>
 </ContentPage>
+

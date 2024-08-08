@@ -1,6 +1,6 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="ObligatorioTallerTecnologia.RegistroUsuario"
+             x:Class="ObligatorioTallerTecnologia.Login"
              BackgroundColor="#000000">
 
     <AbsoluteLayout>
@@ -20,22 +20,13 @@
                    HorizontalOptions="CenterAndExpand">
 
                 <StackLayout Spacing="20">
-                    <Label Text="Crear cuenta"
+                    <Label Text="Iniciar sesión"
                            FontSize="Large"
                            FontAttributes="Bold"
                            TextColor="White"
                            HorizontalOptions="Center" />
 
-                    <Entry x:Name="newName"
-                           Placeholder="Nombre de usuario"
-                           TextColor="White"
-                           PlaceholderColor="LightGray"
-                           BackgroundColor="#333333"
-                           FontSize="Small"
-                           HorizontalOptions="FillAndExpand"
-                           HeightRequest="40" />
-
-                    <Entry x:Name="newEmail"
+                    <Entry x:Name="email"
                            Placeholder="Correo electrónico"
                            TextColor="White"
                            PlaceholderColor="LightGray"
@@ -44,7 +35,7 @@
                            HorizontalOptions="FillAndExpand"
                            HeightRequest="40" />
 
-                    <Entry x:Name="newPass"
+                    <Entry x:Name="password"
                            Placeholder="Contraseña"
                            IsPassword="True"
                            TextColor="White"
@@ -54,13 +45,28 @@
                            HorizontalOptions="FillAndExpand"
                            HeightRequest="40" />
 
-                    <Button Text="Registrarse"
+                    <Button Text="Iniciar sesión"
                             TextColor="White"
                             BackgroundColor="#E50914"
                             FontSize="Small"
                             HorizontalOptions="FillAndExpand"
                             HeightRequest="40"
-                            Clicked="OnNewButtonClicked" />
+                            Clicked="OnLoginButtonClicked" />
+
+                    <Button Text="Usar huella digital"
+                            TextColor="White"
+                            BackgroundColor="#333333"
+                            FontSize="Small"
+                            HorizontalOptions="FillAndExpand"
+                            HeightRequest="40"
+                            Clicked="OnFingerprintButtonClicked" />
+                    <Button Text="Registrarse"
+                            TextColor="White"
+                            BackgroundColor="#333333"
+                            FontSize="Small"
+                            HorizontalOptions="FillAndExpand"
+                            HeightRequest="40"
+                            Clicked="OnRegisterButtonClicked" />
 
                     <Label x:Name="statusMessage"
                            TextColor="Red"
