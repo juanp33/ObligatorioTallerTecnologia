@@ -17,7 +17,8 @@ namespace ObligatorioTallerTecnologia
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
-                });
+                })
+            .UseMauiMaps();
             string dbPath = FileAccessHelper.GetLocalFilePath("usuarioDb1");
             builder.Services.AddSingleton<UserRepository>(s => ActivatorUtilities.CreateInstance<UserRepository>(s, dbPath));
 #if DEBUG
