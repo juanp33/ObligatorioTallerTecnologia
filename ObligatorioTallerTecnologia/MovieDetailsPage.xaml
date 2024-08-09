@@ -48,7 +48,7 @@
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
-                <Image Source="flechaizquierda.jpg"
+                <Image Source="flechaizquierdanueva.png"
                        WidthRequest="30"
                        HeightRequest="30"
                        VerticalOptions="Center"
@@ -87,7 +87,7 @@
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                 </CollectionView>
-                <Image Source="flechaderecha.jpg"
+                <Image Source="flechaderechanueva.png"
                        WidthRequest="30"
                        HeightRequest="30"
                        VerticalOptions="Center"

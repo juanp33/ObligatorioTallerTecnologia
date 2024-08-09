@@ -69,18 +69,18 @@ namespace ObligatorioTallerTecnologia
             {
                 string movieIdString = _movieDetails.Id.ToString();
 
-                // Verifica si la película ya está en favoritos
+            
                 var favoriteMovies = App.UserRepository.GetFavoriteMovies(_currentUser.idUsuario);
 
                 if (favoriteMovies.Contains(movieIdString))
                 {
-                    // Si ya es favorita, eliminarla de la lista
+                  
                     App.UserRepository.RemoveFavoriteMovie(_currentUser.idUsuario, movieIdString);
                     FavoriteButton.Text = "Marcar como Favorito";
                 }
                 else
                 {
-                    // Si no es favorita, agregarla
+                    
                     App.UserRepository.AddFavoriteMovie(_currentUser.idUsuario, movieIdString);
                     FavoriteButton.Text = "Eliminar de Favoritos";
                 }
