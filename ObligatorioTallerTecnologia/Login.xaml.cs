@@ -68,30 +68,28 @@ namespace ObligatorioTallerTecnologia
 
                 if (authResult.Authenticated)
                 {
-                    var userId = Preferences.Get("UserId", string.Empty);
-                    if (!string.IsNullOrEmpty(userId))
+                    
+                    var user = App.UserRepository.GetAll().LastOrDefault();
+
+                    if (user != null)
                     {
-                        var user = App.UserRepository.GetUserById(int.Parse(userId));
-                        if (user != null)
+                        
+                        Preferences.Set("IsLoggedIn", true);
+                        Preferences.Set("UserEmail", user.email);
+                        Preferences.Set("UserId", user.idUsuario.ToString());
+
+                        statusMessage.Text = "Autenticación exitosa.";
+
+                        if (Application.Current.MainPage is AppShell appShell)
                         {
-                            Preferences.Set("IsLoggedIn", true);
-                            Preferences.Set("UserEmail", user.email);
-
-                            statusMessage.Text = "Autenticación exitosa.";
-
-                            // Enviar mensaje de cambio de sesión
-                            MessagingCenter.Send(this, "SessionChanged");
-
-                            await Shell.Current.GoToAsync($"//{nameof(MainPage)}");
+                            appShell.UpdateShell();
                         }
-                        else
-                        {
-                            statusMessage.Text = "No se encontró un usuario asociado.";
-                        }
+
+                        await Shell.Current.GoToAsync($"//MainPage");
                     }
                     else
                     {
-                        statusMessage.Text = "No se encontró un usuario registrado con esta huella.";
+                        statusMessage.Text = "No se encontró ningún usuario registrado.";
                     }
                 }
                 else
@@ -104,5 +102,6 @@ namespace ObligatorioTallerTecnologia
                 statusMessage.Text = $"Error: {ex.Message}";
             }
         }
+
     }
 }
