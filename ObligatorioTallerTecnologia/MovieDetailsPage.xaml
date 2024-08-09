@@ -30,6 +30,12 @@
                    TextColor="White"
                    HorizontalOptions="FillAndExpand"
                    VerticalOptions="StartAndExpand" />
+            <Button x:Name="FavoriteButton"
+                    Text="Marcar como Favorito"
+                    BackgroundColor="DarkRed"
+                    TextColor="White"
+                    Clicked="OnFavoriteButtonClicked" />
+
             <Label Text="Reparto"
                    FontSize="24"
                    FontAttributes="Bold"
@@ -101,8 +107,7 @@
             <WebView Source="{Binding TrailerUrl}"
                      HeightRequest="300"
                      HorizontalOptions="FillAndExpand"
-                     VerticalOptions="FillAndExpand"
-                     />
+                     VerticalOptions="FillAndExpand" />
         </StackLayout>
     </ScrollView>
 </ContentPage>

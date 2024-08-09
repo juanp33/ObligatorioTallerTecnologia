@@ -22,6 +22,10 @@
                   ContentTemplate="{DataTemplate local:RegistroUsuario}"
                   Route="Registro"
                   x:Name="registroShell" />
+    <ShellContent Title="Favoritos"
+                  ContentTemplate="{DataTemplate local:FavoriteMoviesPage}"
+                  Route="Favoritos"
+                  x:Name="favoritosShell" />
     <ShellContent Title="Perfil"
                   ContentTemplate="{DataTemplate local:Perfil}"
                   Route="Perfil"

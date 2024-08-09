@@ -14,13 +14,13 @@ namespace ObligatorioTallerTecnologia
         {
             bool isLoggedIn = Preferences.Get("IsLoggedIn", false);
 
-            // Actualizar la visibilidad de los elementos
+           
             loginShell.IsVisible = !isLoggedIn;
             registroShell.IsVisible = !isLoggedIn;
+            favoritosShell.IsVisible = isLoggedIn;
             perfilShell.IsVisible = isLoggedIn;
 
-            // Redirigir a la página adecuada
-           
+         
         }
     }
 

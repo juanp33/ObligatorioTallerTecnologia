@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using SQLite;
 using ObligatorioTallerTecnologia.Modelo;
 
+
 namespace ObligatorioTallerTecnologia.Modelo
 {
     public class UserRepository
@@ -14,6 +15,10 @@ namespace ObligatorioTallerTecnologia.Modelo
         public string statusMessage { get; set; }
 
         private SQLiteConnection conn;
+        public int UpdateUser(Usuario user)
+        {
+            return conn.Update(user);
+        }
         public Usuario GetUserByEmail(string email)
         {
             try
@@ -33,8 +38,31 @@ namespace ObligatorioTallerTecnologia.Modelo
                 return;
             conn = new SQLiteConnection(_dbPath);
             conn.CreateTable<Usuario>();
+            conn.CreateTable<FavoriteMovie>();
+        }
+        public List<string> GetFavoriteMovies(int userId)
+        {
+            return conn.Table<FavoriteMovie>()
+                       .Where(fm => fm.UserId == userId)
+                       .Select(fm => fm.MovieId)
+                       .ToList();
         }
 
+        public void AddFavoriteMovie(int userId, string movieId)
+        {
+            var favoriteMovie = new FavoriteMovie { UserId = userId, MovieId = movieId };
+            conn.Insert(favoriteMovie);
+        }
+
+        public void RemoveFavoriteMovie(int userId, string movieId)
+        {
+            var favoriteMovie = conn.Table<FavoriteMovie>()
+                                    .FirstOrDefault(fm => fm.UserId == userId && fm.MovieId == movieId);
+            if (favoriteMovie != null)
+            {
+                conn.Delete(favoriteMovie);
+            }
+        }
         public UserRepository(string dbPath)
         {
             _dbPath = dbPath;

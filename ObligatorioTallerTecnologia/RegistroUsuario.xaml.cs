@@ -22,14 +22,17 @@ namespace ObligatorioTallerTecnologia
                 !string.IsNullOrWhiteSpace(newEmail.Text) &&
                 !string.IsNullOrWhiteSpace(newPass.Text))
             {
-                // Pedir foto antes de proceder
-                string photoPath = await TakePhotoAsync();
+                string photoPath = null;
 
-                if (string.IsNullOrEmpty(photoPath))
-                {
-                    statusMessage.Text = "Es necesario tomar una foto para completar el registro.";
-                    return;
-                }
+#if ANDROID
+        photoPath = await TakePhotoAsync();
+
+        if (string.IsNullOrEmpty(photoPath))
+        {
+            statusMessage.Text = "Es necesario tomar una foto para completar el registro.";
+            return;
+        }
+#endif
 
                 var user = new Usuario
                 {
@@ -48,6 +51,7 @@ namespace ObligatorioTallerTecnologia
                 statusMessage.Text = "Todos los campos son obligatorios.";
             }
         }
+
 
         private async Task<string> TakePhotoAsync()
         {
