@@ -32,6 +32,6 @@
                   x:Name="perfilShell" />
     <ShellContent Title="Sucursales"
                ContentTemplate="{DataTemplate local:SucursalesMapa}"
-               Route="SucursalesMapa"
-               x:Name="perfilShell" />
+               Route="Sucursales"
+               x:Name="sucursalesShell" />
 </Shell>
