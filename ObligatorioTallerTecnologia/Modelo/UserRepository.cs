@@ -32,6 +32,47 @@ namespace ObligatorioTallerTecnologia.Modelo
                 return null;
             }
         }
+        public void AddSucursal(Sucursal sucursal)
+        {
+            try
+            {
+                Init();
+                conn.Insert(sucursal);
+                statusMessage = $"Sucursal agregada: {sucursal.Nombre} (ID: {sucursal.Id})";
+            }
+            catch (Exception ex)
+            {
+                statusMessage = $"Error: {ex.Message}";
+            }
+        }
+
+        public void DeleteSucursal(Sucursal sucursal)
+        {
+            try
+            {
+                Init();
+                conn.Delete(sucursal);
+                statusMessage = $"Sucursal eliminada: {sucursal.Nombre} (ID: {sucursal.Id})";
+            }
+            catch (Exception ex)
+            {
+                statusMessage = $"Error: {ex.Message}";
+            }
+        }
+
+        public List<Sucursal> GetAllSucursales()
+        {
+            try
+            {
+                Init();
+                return conn.Table<Sucursal>().ToList();
+            }
+            catch (Exception ex)
+            {
+                statusMessage = $"Error: {ex.Message}";
+                return new List<Sucursal>();
+            }
+        }
         private void Init()
         {
             if (conn != null)
@@ -39,6 +80,7 @@ namespace ObligatorioTallerTecnologia.Modelo
             conn = new SQLiteConnection(_dbPath);
             conn.CreateTable<Usuario>();
             conn.CreateTable<FavoriteMovie>();
+            conn.CreateTable<Sucursal>();
         }
         public List<string> GetFavoriteMovies(int userId)
         {
