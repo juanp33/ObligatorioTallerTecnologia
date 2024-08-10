@@ -1,3 +1,6 @@
+
+using Microsoft.Maui.Controls.Maps;
+using Newtonsoft.Json.Linq;
 using ObligatorioTallerTecnologia.Modelo;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -8,6 +11,8 @@ namespace ObligatorioTallerTecnologia
     public partial class MoviesPage : ContentPage
     {
         private readonly MovieService _movieService;
+        private Location userLocation;
+        private Polyline routePolyline;
 
         public MoviesPage()
         {
@@ -15,7 +20,7 @@ namespace ObligatorioTallerTecnologia
             _movieService = new MovieService();
             LoadPopularMovies();
         }
-
+       
         private async Task LoadPopularMovies()
         {
             var movies = await _movieService.GetPopularMoviesAsync();

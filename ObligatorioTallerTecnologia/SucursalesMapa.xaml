@@ -5,6 +5,11 @@
              Title="Sucursales">
     
     <StackLayout Padding="10">
+        <!-- Botón para encontrar la sucursal más cercana -->
+        
+        <maps:Map x:Name="map"
+                  HeightRequest="400"
+                  VerticalOptions="FillAndExpand" />
         <Entry x:Name="entryNombre"
                Placeholder="Nombre de la Sucursal" />
         <Entry x:Name="entryDireccion"
@@ -14,9 +19,7 @@
                Placeholder="Teléfono de la Sucursal" />
 
         <!-- Mapa que mostrará la ubicación del usuario y donde se seleccionará la nueva sucursal -->
-        <maps:Map x:Name="map"
-                  HeightRequest="400"
-                  VerticalOptions="FillAndExpand" />
+        
 
         <Button Text="Agregar Sucursal"
                 Clicked="OnAgregarSucursalClicked"

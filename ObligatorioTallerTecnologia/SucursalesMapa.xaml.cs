@@ -1,5 +1,7 @@
+
 using Microsoft.Maui.Controls.Maps;
 using Microsoft.Maui.Maps;
+using Newtonsoft.Json.Linq;
 using ObligatorioTallerTecnologia.Modelo;
 using SQLite;
 
@@ -15,7 +17,7 @@ public partial class SucursalesMapa : ContentPage
         InitializeComponent();
         CargarSucursales();
     }
-
+   
     protected override async void OnAppearing()
     {
         base.OnAppearing();
@@ -112,17 +114,20 @@ public partial class SucursalesMapa : ContentPage
         {
             map.Pins.Add(userLocationPin);
         }
-
-        foreach (var sucursal in sucursales)
+        try
         {
-            var pin = new Pin
+            foreach (var sucursal in sucursales)
             {
-                Label = sucursal.Nombre,
-                Address = sucursal.Direccion,
-                Type = PinType.Place,
-                Location = new Location(sucursal.Latitud, sucursal.Longitud)
-            };
-            map.Pins.Add(pin);
+                var pin = new Pin
+                {
+                    Label = sucursal.Nombre,
+                    Address = sucursal.Direccion,
+                    Type = PinType.Place,
+                    Location = new Location(sucursal.Latitud, sucursal.Longitud)
+                };
+                map.Pins.Add(pin);
+            }
         }
+        catch (Exception ex) { }
     }
 }
