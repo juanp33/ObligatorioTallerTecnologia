@@ -23,7 +23,7 @@
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="Auto" />
                                         <RowDefinition Height="*" />
-                                        <RowDefinition Height="Auto" />asdasd
+                                        <RowDefinition Height="Auto" />
                                     </Grid.RowDefinitions>
                                     <Label Text="{Binding Title}"
                                            FontSize="14"
