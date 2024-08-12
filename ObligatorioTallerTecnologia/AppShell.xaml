@@ -3,8 +3,11 @@
        xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
        xmlns:local="clr-namespace:ObligatorioTallerTecnologia"
-       Title="ObligatorioTallerTecnologia">
-
+       Title="ObligatorioTallerTecnologia"
+       Shell.BackgroundColor="#283138"
+       Shell.TitleColor="White"
+       Shell.NavBarIsVisible="True"
+       FlyoutBackground="#283138">
     <ShellContent Title="Home"
                   ContentTemplate="{DataTemplate local:MainPage}"
                   Route="MainPage" />

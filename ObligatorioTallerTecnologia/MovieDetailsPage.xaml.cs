@@ -47,13 +47,24 @@ namespace ObligatorioTallerTecnologia
             {
                 _currentUser = App.UserRepository.GetUserByEmail(userEmail);
             }
+            else
+            {
+                _currentUser = null;
+            }
         }
 
         private void UpdateFavoriteButtonText()
         {
+            if (_currentUser == null)
+            {
+                FavoriteButton.IsEnabled = false;
+                FavoriteButton.Text = "Inicia sesión para añadir a Favoritos";
+                return;
+            }
+
             string movieIdString = _movieDetails.Id.ToString();
             var favoriteMovies = App.UserRepository.GetFavoriteMovies(_currentUser.idUsuario);
-            if (_currentUser != null && favoriteMovies.Contains(movieIdString))
+            if (favoriteMovies.Contains(movieIdString))
             {
                 FavoriteButton.Text = "Eliminar de Favoritos";
             }
@@ -65,25 +76,24 @@ namespace ObligatorioTallerTecnologia
 
         private void OnFavoriteButtonClicked(object sender, EventArgs e)
         {
-            if (_currentUser != null)
+            if (_currentUser == null)
             {
-                string movieIdString = _movieDetails.Id.ToString();
+                DisplayAlert("Iniciar sesión", "Por favor, inicia sesión para poder añadir esta película a tus favoritos.", "Aceptar");
+                return;
+            }
 
-            
-                var favoriteMovies = App.UserRepository.GetFavoriteMovies(_currentUser.idUsuario);
+            string movieIdString = _movieDetails.Id.ToString();
+            var favoriteMovies = App.UserRepository.GetFavoriteMovies(_currentUser.idUsuario);
 
-                if (favoriteMovies.Contains(movieIdString))
-                {
-                  
-                    App.UserRepository.RemoveFavoriteMovie(_currentUser.idUsuario, movieIdString);
-                    FavoriteButton.Text = "Marcar como Favorito";
-                }
-                else
-                {
-                    
-                    App.UserRepository.AddFavoriteMovie(_currentUser.idUsuario, movieIdString);
-                    FavoriteButton.Text = "Eliminar de Favoritos";
-                }
+            if (favoriteMovies.Contains(movieIdString))
+            {
+                App.UserRepository.RemoveFavoriteMovie(_currentUser.idUsuario, movieIdString);
+                FavoriteButton.Text = "Marcar como Favorito";
+            }
+            else
+            {
+                App.UserRepository.AddFavoriteMovie(_currentUser.idUsuario, movieIdString);
+                FavoriteButton.Text = "Eliminar de Favoritos";
             }
         }
 

@@ -5,7 +5,7 @@
              Title="Sucursales">
     
     <StackLayout Padding="10">
-        <!-- Botón para encontrar la sucursal más cercana -->
+       
         
         <maps:Map x:Name="map"
                   HeightRequest="400"
@@ -18,14 +18,14 @@
         <Entry x:Name="entryTelefono"
                Placeholder="Teléfono de la Sucursal" />
 
-        <!-- Mapa que mostrará la ubicación del usuario y donde se seleccionará la nueva sucursal -->
+      
         
 
         <Button Text="Agregar Sucursal"
                 Clicked="OnAgregarSucursalClicked"
                 Margin="0,10,0,0" />
 
-        <!-- Picker para seleccionar una sucursal existente para eliminar -->
+       
         <Picker x:Name="pickerSucursales"
                 Title="Selecciona una sucursal para eliminar" />
 

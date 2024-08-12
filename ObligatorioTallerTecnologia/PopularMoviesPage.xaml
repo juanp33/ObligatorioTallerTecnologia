@@ -2,7 +2,8 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ObligatorioTallerTecnologia.PopularMoviesPage"
-             Title="Popular">
+             Title="Popular"
+             BackgroundColor="#283138">
     <ScrollView>
         <Grid Padding="10">
             
@@ -14,7 +15,7 @@
                     <DataTemplate>
                         <Frame Margin="5"
                                CornerRadius="10"
-                               BackgroundColor="#283138"
+                               BackgroundColor="#1b1f21"
                                HasShadow="True">
                             <StackLayout Orientation="Vertical"
                                          Padding="0">
@@ -22,7 +23,7 @@
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="Auto" />
                                         <RowDefinition Height="*" />
-                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />asdasd
                                     </Grid.RowDefinitions>
                                     <Label Text="{Binding Title}"
                                            FontSize="14"

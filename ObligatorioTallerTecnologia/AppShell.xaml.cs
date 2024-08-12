@@ -8,6 +8,10 @@ namespace ObligatorioTallerTecnologia
         {
             InitializeComponent();
             UpdateShell();
+#if WINDOWS
+            // Oculta la pestaña de "Sucursales" en Windows
+            this.Items.Remove(sucursalesShell);
+#endif
         }
 
         public void UpdateShell()

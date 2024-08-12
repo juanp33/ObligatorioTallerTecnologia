@@ -25,10 +25,10 @@ public partial class SucursalesMapa : ContentPage
         var geolocation = new GeolocationRequest(GeolocationAccuracy.High, TimeSpan.FromSeconds(10));
         var location = await Geolocation.GetLocationAsync(geolocation);
 
-        // Mover el mapa a la ubicación del usuario
+       
         map.MoveToRegion(MapSpan.FromCenterAndRadius(location, Distance.FromMiles(2)));
 
-        // Crear un círculo para la ubicación del usuario
+        
         var userLocationCircle = new Circle
         {
             Center = new Location(location.Latitude, location.Longitude),
@@ -60,11 +60,19 @@ public partial class SucursalesMapa : ContentPage
 
         map.Pins.Add(selectedPin);
 
-        entryDireccion.Text = $"Lat: {selectedPin.Location.Latitude}, Long: {selectedPin.Location.Longitude}";
     }
 
     private void OnAgregarSucursalClicked(object sender, EventArgs e)
     {
+        // Verificar que los campos de nombre, dirección y teléfono no sean nulos o estén vacíos
+        if (string.IsNullOrWhiteSpace(entryNombre.Text) ||
+            string.IsNullOrWhiteSpace(entryDireccion.Text) ||
+            string.IsNullOrWhiteSpace(entryTelefono.Text))
+        {
+            DisplayAlert("Error", "Por favor, completa todos los campos obligatorios (Nombre, Dirección, Teléfono).", "OK");
+            return;
+        }
+
         if (selectedPin == null)
         {
             DisplayAlert("Error", "Por favor, selecciona una ubicación en el mapa.", "OK");
@@ -80,9 +88,8 @@ public partial class SucursalesMapa : ContentPage
             Longitud = selectedPin.Location.Longitude
         };
         App.UserRepository.AddSucursal(nuevaSucursal);
-        CargarSucursales(); // Actualizar la lista de sucursales
+        CargarSucursales();
 
-        // Limpiar después de agregar
         map.Pins.Remove(selectedPin);
         selectedPin = null;
         entryNombre.Text = string.Empty;
@@ -96,7 +103,7 @@ public partial class SucursalesMapa : ContentPage
         {
             App.UserRepository.DeleteSucursal(sucursalSeleccionada);
             map.Pins.Remove(map.Pins.FirstOrDefault(pin => pin.Label == sucursalSeleccionada.Nombre));
-            CargarSucursales(); // Actualizar la lista de sucursales
+            CargarSucursales(); 
         }
     }
 
@@ -109,7 +116,7 @@ public partial class SucursalesMapa : ContentPage
 
         map.Pins.Clear();
 
-        // Volver a agregar el pin de la ubicación del usuario al limpiar los pins
+        
         if (userLocationPin != null)
         {
             map.Pins.Add(userLocationPin);
