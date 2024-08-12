@@ -32,13 +32,13 @@ public partial class SucursalesMapa : ContentPage
         var userLocationCircle = new Circle
         {
             Center = new Location(location.Latitude, location.Longitude),
-            Radius = new Distance(20), // Radio del círculo en metros
-            StrokeColor = Colors.Blue, // Color del borde del círculo
-            StrokeWidth = 2, // Grosor del borde
-            FillColor = Colors.Red // Color de relleno con transparencia (opacidad)
+            Radius = new Distance(40), 
+            StrokeColor = Colors.Blue, 
+            StrokeWidth = 10, 
+            FillColor = Colors.Red 
         };
 
-        // Añadir el círculo al mapa
+    
         map.MapElements.Add(userLocationCircle);
 
         map.MapClicked += OnMapClicked;
@@ -64,7 +64,7 @@ public partial class SucursalesMapa : ContentPage
 
     private void OnAgregarSucursalClicked(object sender, EventArgs e)
     {
-        // Verificar que los campos de nombre, dirección y teléfono no sean nulos o estén vacíos
+        
         if (string.IsNullOrWhiteSpace(entryNombre.Text) ||
             string.IsNullOrWhiteSpace(entryDireccion.Text) ||
             string.IsNullOrWhiteSpace(entryTelefono.Text))

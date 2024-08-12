@@ -9,7 +9,7 @@ namespace ObligatorioTallerTecnologia
             InitializeComponent();
             UpdateShell();
 #if WINDOWS
-            // Oculta la pestaña de "Sucursales" en Windows
+            
             this.Items.Remove(sucursalesShell);
 #endif
         }
@@ -23,8 +23,9 @@ namespace ObligatorioTallerTecnologia
             registroShell.IsVisible = !isLoggedIn;
             favoritosShell.IsVisible = isLoggedIn;
             perfilShell.IsVisible = isLoggedIn;
+            sucursalesShell.IsVisible = isLoggedIn;
 
-         
+
         }
     }
 

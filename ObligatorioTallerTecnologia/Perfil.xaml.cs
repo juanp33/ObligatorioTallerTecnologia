@@ -19,7 +19,7 @@ namespace ObligatorioTallerTecnologia
 
         private void LoadUserProfile()
         {
-            // Obtén el usuario actual de las preferencias o de otra fuente
+           
             var userEmail = Preferences.Get("UserEmail", string.Empty);
             if (!string.IsNullOrEmpty(userEmail))
             {

@@ -29,12 +29,13 @@
                   ContentTemplate="{DataTemplate local:FavoriteMoviesPage}"
                   Route="Favoritos"
                   x:Name="favoritosShell" />
-    <ShellContent Title="Perfil"
-                  ContentTemplate="{DataTemplate local:Perfil}"
-                  Route="Perfil"
-                  x:Name="perfilShell" />
+    
     <ShellContent Title="Sucursales"
                ContentTemplate="{DataTemplate local:SucursalesMapa}"
                Route="Sucursales"
                x:Name="sucursalesShell" />
+    <ShellContent Title="Perfil"
+                  ContentTemplate="{DataTemplate local:Perfil}"
+                  Route="Perfil"
+                  x:Name="perfilShell" />
 </Shell>

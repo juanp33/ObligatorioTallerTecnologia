@@ -13,8 +13,7 @@
         <Entry x:Name="entryNombre"
                Placeholder="Nombre de la Sucursal" />
         <Entry x:Name="entryDireccion"
-               Placeholder="Dirección de la Sucursal"
-               IsReadOnly="True" />
+               Placeholder="Dirección de la Sucursal" />
         <Entry x:Name="entryTelefono"
                Placeholder="Teléfono de la Sucursal" />
 
