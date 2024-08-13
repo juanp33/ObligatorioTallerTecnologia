@@ -26,12 +26,17 @@ namespace ObligatorioTallerTecnologia
                 var user = App.UserRepository.GetUserByEmail(userEmail);
                 if (user != null)
                 {
-                    userNameLabel.Text = user.nombreUsuario;
-                    userEmailLabel.Text = user.email;
+                    userNameLabel.Text = "Nombre: " + user.nombreUsuario;
+                    userEmailLabel.Text = "Email: " + user.email;
+                    userPhoneLabel.Text = "Telefono: " + user.telefono;
 
                     if (!string.IsNullOrEmpty(user.imagenFoto))
                     {
                         profileImage.Source = ImageSource.FromFile(user.imagenFoto);
+                    }
+                    else
+                    {
+                        profileImage.Source = ImageSource.FromFile("fotosuarez.jpg");
                     }
                 }
             }

@@ -3,6 +3,7 @@ using System;
 using System.IO;
 using System.Threading.Tasks;
 using Microsoft.Maui.Controls;
+using System.Text.RegularExpressions;
 
 
 namespace ObligatorioTallerTecnologia
@@ -13,17 +14,35 @@ namespace ObligatorioTallerTecnologia
         {
             InitializeComponent();
         }
+        private bool IsValidEmail(string email)
+        {
+            if (string.IsNullOrWhiteSpace(email))
+                return false;
 
+       
+            var regex = new Regex(@"^[^@\s]+@[^@\s]+\.[^@\s]+$");
+            return regex.IsMatch(email);
+        }
         public async void OnNewButtonClicked(object sender, EventArgs args)
         {
             statusMessage.Text = "";
 
             if (!string.IsNullOrWhiteSpace(newName.Text) &&
                 !string.IsNullOrWhiteSpace(newEmail.Text) &&
-                !string.IsNullOrWhiteSpace(newPass.Text))
+                !string.IsNullOrWhiteSpace(newPass.Text) && !string.IsNullOrEmpty(newPhone.Text)) 
             {
                 string photoPath = null;
+                if (!double.TryParse(newPhone.Text, out double latitud))
 
+                {
+                    await DisplayAlert("Error", "Telefono debe ser un valor numerico.", "OK");
+                    return;
+                }
+                if (!IsValidEmail(newEmail.Text))
+                {
+                    await DisplayAlert("Error", "El correo electrónico no es válido.", "OK");
+                    return;
+                }
 #if ANDROID
         photoPath = await TakePhotoAsync();
 
@@ -39,7 +58,8 @@ namespace ObligatorioTallerTecnologia
                     nombreUsuario = newName.Text,
                     email = newEmail.Text,
                     contraseña = newPass.Text,
-                    imagenFoto = photoPath
+                    imagenFoto = photoPath,
+                    telefono = newPhone.Text
                 };
 
                 App.UserRepository.AddUser(user);

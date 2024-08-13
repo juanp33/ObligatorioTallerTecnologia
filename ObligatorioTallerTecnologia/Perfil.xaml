@@ -4,13 +4,13 @@
              BackgroundColor="#000000">
 
     <AbsoluteLayout>
-        <!-- Imagen de fondo -->
+        
         <Image Source="fondopantallainicio.jpg"
                Aspect="AspectFill"
                AbsoluteLayout.LayoutBounds="0,0,1,1"
                AbsoluteLayout.LayoutFlags="All" />
 
-        <!-- Contenido centrado -->
+       
         <ScrollView AbsoluteLayout.LayoutBounds="0.5,0.5,-1,-1"
                     AbsoluteLayout.LayoutFlags="PositionProportional">
             <Frame BackgroundColor="#283138"
@@ -41,7 +41,10 @@
                            TextColor="White"
                            FontSize="Medium"
                            HorizontalOptions="Center" />
-
+                    <Label x:Name="userPhoneLabel"
+                           TextColor="White"
+                           FontSize="Medium"
+                           HorizontalOptions="Center" />
                     <Button Text="Cerrar sesión"
                             TextColor="White"
                             BackgroundColor="#E50914"

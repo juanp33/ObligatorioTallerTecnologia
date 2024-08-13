@@ -23,6 +23,8 @@ namespace ObligatorioTallerTecnologia.Modelo
         [MaxLength(20)]
         public string contraseña { get; set; }
 
+        [MaxLength(20)]
+        public string telefono { get; set; }
         public string imagenFoto { get; set; }
 
         

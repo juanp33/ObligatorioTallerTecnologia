@@ -37,6 +37,7 @@
 
                     <Entry x:Name="newEmail"
                            Placeholder="Correo electrónico"
+                           Keyboard="Email"
                            TextColor="White"
                            PlaceholderColor="LightGray"
                            BackgroundColor="#333333"
@@ -44,6 +45,15 @@
                            HorizontalOptions="FillAndExpand"
                            HeightRequest="40" />
 
+                    <Entry x:Name="newPhone"
+                           Placeholder="Telefono"
+                           Keyboard="Numeric"
+                           TextColor="White"
+                           PlaceholderColor="LightGray"
+                           BackgroundColor="#333333"
+                           FontSize="Small"
+                           HorizontalOptions="FillAndExpand"
+                           HeightRequest="40" />
                     <Entry x:Name="newPass"
                            Placeholder="Contraseña"
                            IsPassword="True"
