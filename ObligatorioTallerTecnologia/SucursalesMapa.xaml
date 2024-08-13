@@ -2,7 +2,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:maps="clr-namespace:Microsoft.Maui.Controls.Maps;assembly=Microsoft.Maui.Controls.Maps"
              x:Class="ObligatorioTallerTecnologia.SucursalesMapa"
-             Title="Sucursales">
+             Title="Sucursales"
+             BackgroundColor="#283138">
     
     <StackLayout Padding="10">
        
