@@ -34,6 +34,10 @@
                ContentTemplate="{DataTemplate local:SucursalesMapa}"
                Route="Sucursales"
                x:Name="sucursalesShell" />
+    <ShellContent Title="Sucursales"
+                  ContentTemplate="{DataTemplate local:SucursalesWindows}"
+                  Route="Sucursales"
+                  x:Name="sucursalesWindowsShell" />
     <ShellContent Title="Perfil"
                   ContentTemplate="{DataTemplate local:Perfil}"
                   Route="Perfil"

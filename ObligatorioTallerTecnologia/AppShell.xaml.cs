@@ -12,6 +12,10 @@ namespace ObligatorioTallerTecnologia
             
             this.Items.Remove(sucursalesShell);
 #endif
+#if ANDROID    
+            this.Items.Add(sucursalesWindowsShell);
+
+#endif
         }
 
         public void UpdateShell()
@@ -24,7 +28,7 @@ namespace ObligatorioTallerTecnologia
             favoritosShell.IsVisible = isLoggedIn;
             perfilShell.IsVisible = isLoggedIn;
             sucursalesShell.IsVisible = isLoggedIn;
-
+            sucursalesWindowsShell.IsVisible = isLoggedIn;
 
         }
     }

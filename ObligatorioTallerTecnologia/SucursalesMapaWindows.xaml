@@ -1,0 +1,45 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ObligatorioTallerTecnologia.SucursalesWindows"
+             Title="Sucursales (Windows)">
+
+    <StackLayout Padding="10">
+
+      
+        <Entry x:Name="entryNombre"
+               Placeholder="Nombre de la Sucursal" />
+
+       
+        <Entry x:Name="entryDireccion"
+               Placeholder="Dirección de la Sucursal" />
+
+       
+        <Entry x:Name="entryTelefono"
+               Placeholder="Teléfono de la Sucursal" />
+
+        
+        <Entry x:Name="entryLatitud"
+               Placeholder="Latitud"
+               Keyboard="Numeric" />
+
+      
+        <Entry x:Name="entryLongitud"
+               Placeholder="Longitud"
+               Keyboard="Numeric" />
+
+      
+        <Button Text="Agregar Sucursal"
+                Clicked="OnAgregarSucursalClicked"
+                Margin="0,10,0,0" />
+
+       
+        <Picker x:Name="pickerSucursales"
+                Title="Selecciona una sucursal para eliminar" />
+
+       
+        <Button Text="Eliminar Sucursal"
+                Clicked="OnEliminarSucursalClicked"
+                Margin="0,10,0,0" />
+
+    </StackLayout>
+</ContentPage>
