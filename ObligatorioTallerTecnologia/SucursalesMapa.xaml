@@ -4,10 +4,8 @@
              x:Class="ObligatorioTallerTecnologia.SucursalesMapa"
              Title="Sucursales"
              BackgroundColor="#283138">
-    
+
     <StackLayout Padding="10">
-       
-        
         <maps:Map x:Name="map"
                   HeightRequest="400"
                   VerticalOptions="FillAndExpand" />
@@ -17,15 +15,9 @@
                Placeholder="Dirección de la Sucursal" />
         <Entry x:Name="entryTelefono"
                Placeholder="Teléfono de la Sucursal" />
-
-      
-        
-
         <Button Text="Agregar Sucursal"
                 Clicked="OnAgregarSucursalClicked"
                 Margin="0,10,0,0" />
-
-       
         <Picker x:Name="pickerSucursales"
                 Title="Selecciona una sucursal para eliminar" />
 

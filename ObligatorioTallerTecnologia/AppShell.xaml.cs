@@ -13,7 +13,7 @@ namespace ObligatorioTallerTecnologia
             this.Items.Remove(sucursalesShell);
 #endif
 #if ANDROID    
-            this.Items.Add(sucursalesWindowsShell);
+            this.Items.Remove(sucursalesWindowsShell);
 
 #endif
         }
