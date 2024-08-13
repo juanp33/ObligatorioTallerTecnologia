@@ -8,7 +8,7 @@
     <ContentPage.Content>
         <StackLayout>
             <SearchBar x:Name="BusquedaBar"
-                       Placeholder="Buscar por nombre o actor"
+                       Placeholder="Buscar por nombre, actor o año"
                        SearchButtonPressed="OnSearchButtonPressed" />
             <ListView x:Name="MoviesListView"
                       HasUnevenRows="True"

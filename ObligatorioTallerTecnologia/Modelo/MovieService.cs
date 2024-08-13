@@ -50,6 +50,25 @@ namespace ObligatorioTallerTecnologia.Modelo
             var movieResponse = JsonConvert.DeserializeObject<MovieResponse>(response.Content);
             return movieResponse?.Results ?? new List<Movie>();
         }
+        public async Task<List<Movie>> SearchMoviesByYearAsync(int year)
+        {
+            var movieRequest = new RestRequest("discover/movie", Method.Get);
+            movieRequest.AddParameter("api_key", ApiKey);
+            movieRequest.AddParameter("language", "es-ES");
+            movieRequest.AddParameter("primary_release_year", year);
+            movieRequest.AddParameter("sort_by", "popularity.desc");
+
+            var movieResponse = await _client.GetAsync(movieRequest);
+
+            if (!movieResponse.IsSuccessful)
+            {
+                return new List<Movie>();
+            }
+
+            var movieListResponse = JsonConvert.DeserializeObject<MovieResponse>(movieResponse.Content);
+            return movieListResponse?.Results ?? new List<Movie>();
+        }
+
         public async Task<List<Movie>> SearchMoviesAsync(string query)
         {
             var request = new RestRequest("search/movie", Method.Get);

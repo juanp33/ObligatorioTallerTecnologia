@@ -45,6 +45,7 @@ namespace ObligatorioTallerTecnologia
             Preferences.Remove("IsLoggedIn");
 
             ((AppShell)Application.Current.MainPage).UpdateShell();
+            await DisplayAlert("Sesión finalizada", "Se deslogueo correctamente", "OK");
             await Shell.Current.GoToAsync("///MainPage");
         }
     }

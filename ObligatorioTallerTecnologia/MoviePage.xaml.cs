@@ -32,11 +32,27 @@ namespace ObligatorioTallerTecnologia
 
             if (!string.IsNullOrEmpty(query))
             {
-                var moviesByName = await _movieService.SearchMoviesAsync(query);
-                var moviesByActor = await _movieService.SearchMoviesByActorAsync(query);
+                List<Movie> combinedMovies = new List<Movie>();
 
+                
+               
+                    var moviesByName = await _movieService.SearchMoviesAsync(query);
+                    var moviesByActor = await _movieService.SearchMoviesByActorAsync(query);
 
-                var combinedMovies = moviesByName.Concat(moviesByActor).GroupBy(m => m.Id).Select(g => g.First()).ToList();
+                combinedMovies = moviesByName.Concat(moviesByActor)
+                                             .GroupBy(m => m.Id)
+                                             .Select(g => g.First())
+                                             .ToList();
+
+                if (int.TryParse(query, out int year))
+                {
+
+                    var moviesByYear = await _movieService.SearchMoviesByYearAsync(year);
+                    combinedMovies = moviesByName.Concat(moviesByYear)
+                                            .GroupBy(m => m.Id)
+                                            .Select(g => g.First())
+                                            .ToList();
+                }
 
                 MoviesListView.ItemsSource = combinedMovies;
             }

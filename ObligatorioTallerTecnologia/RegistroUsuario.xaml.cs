@@ -45,6 +45,7 @@ namespace ObligatorioTallerTecnologia
                 App.UserRepository.AddUser(user);
                 statusMessage.Text = App.UserRepository.statusMessage;
                 await Navigation.PopAsync();
+                await DisplayAlert("Registro exitoso", "Se registró correctamente", "OK");
                 await Shell.Current.GoToAsync("///MainPage");
             }
             else

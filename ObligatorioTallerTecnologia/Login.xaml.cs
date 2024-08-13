@@ -39,7 +39,7 @@ namespace ObligatorioTallerTecnologia
                     {
                         appShell.UpdateShell();
                     }
-                    
+                    await DisplayAlert("Login exitoso", "Se logueo correctamente", "OK");
                     await Shell.Current.GoToAsync("///MainPage");
                 }
                 else
